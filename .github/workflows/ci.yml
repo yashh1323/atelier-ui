@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify Chrome binary and environment probe
+        run: |
+          which google-chrome || which chromium-browser || true
+          node scripts/detect-env.mjs
+
+      - name: Run static UI linter on repository
+        run: node scripts/lint-ui.mjs .
+
+      - name: Run zero-dependency smoke test suite
+        run: node --test tests/smoke.mjs

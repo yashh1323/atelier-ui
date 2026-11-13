@@ -1,0 +1,22 @@
+{
+  "name": "atelier-ui",
+  "version": "1.1.0",
+  "description": "Adaptive frontend and visual design orchestrator skill (SKILL.md) with zero-dependency Chrome CDP verification.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "atelier-ui": "bin/atelier-ui.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "SKILL.md",
+    "modules/",
+    "library/",
+    "scripts/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ]
+}
